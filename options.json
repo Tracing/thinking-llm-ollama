@@ -1,0 +1,12 @@
+{
+    "ollama_url": "http://127.0.0.1:11434",
+    "prompt_file": "prompt.txt",
+    "aggregator_prompt_template_file": "aggregator_prompt.txt",
+    "output_file": "output.txt",
+    "models": ["llama3.1:8b-instruct-q4_K_S", "Qwen2.5-14B-Instruct.i1-IQ4_XS:latest", "Mistral-Nemo-Instruct-2407-IQ4_XS:latest", "glm4:9b-chat-q4_K_S"],
+    "aggregator_model": "Mistral-Small-Instruct-2409-IQ4_XS:latest",
+    "num_ctx": 2048,
+    "num_ctx_aggregator": 12000,
+    "t": 0.7,
+    "t_aggregator": 0.7
+}
