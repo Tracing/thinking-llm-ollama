@@ -35,7 +35,7 @@ def repeat_moa(parameters):
     responses = [call_model(parameters["ollama_url"], model, parameters["prompt"], parameters["num_ctx"], parameters["t"]) for model in parameters["models"]]
     aggregator_prompt = get_aggregator_prompt(parameters["aggregator_prompt_template"], parameters["prompt"], responses)
     final_response = call_model(parameters["ollama_url"], parameters["aggregator_model"], aggregator_prompt, parameters["num_ctx_aggregator"], parameters["t_aggregator"])
-    return final_response
+    return (final_response, aggregator_prompt)
 
 def read_file(f_name):
     with open(f_name, "r") as f:
@@ -53,24 +53,15 @@ def read_options(f_name):
 
 def main():
     options_file = "options.json"
-    parameters = read_options(options_file)    
-    
-    #prompt_file = "prompt.txt"
-    #aggregator_prompt_template_file = "aggregator_prompt.txt"
-    #output_file = "output.txt"
-    #aggregator_model = "Mistral-Small-Instruct-2409-IQ4_XS:latest"
-    #model = "Mistral-Small-Instruct-2409-IQ4_XS:latest"
-    #temperature
-    #num_ctx = 2048
-    #num_ctx_aggregator = 8142
-    #n = 3
+    parameters = read_options(options_file)
 
     start = time.time()
     parameters["prompt"] = read_file(parameters["prompt_file"])
     parameters["aggregator_prompt_template"] = read_file(parameters["aggregator_prompt_template_file"])
-    final_response = repeat_moa(parameters)
+    (final_response, aggregator_prompt) = repeat_moa(parameters)
 
     write_to_file(parameters["output_file"], final_response["response"])
+    write_to_file(parameters["aggregator_prompt_output_file"], aggregator_prompt)
     
     end = time.time()
     print("Aggregator model consumed {} tokens.".format(final_response["n_tokens_read"]))
