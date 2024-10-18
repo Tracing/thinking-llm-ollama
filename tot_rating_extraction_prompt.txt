@@ -1,0 +1,1 @@
+This is a piece of text which has a rating from 1 to 10. What is the rating that this piece of text gives? Answer in one word with one number.

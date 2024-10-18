@@ -1,0 +1,1 @@
+This is a user query and a plan to fulfill that query. Answer the query with the given plan. 

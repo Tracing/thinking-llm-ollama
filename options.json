@@ -1,12 +1,34 @@
 {
     "ollama_url": "http://127.0.0.1:11434",
     "prompt_file": "prompt.txt",
-    "aggregator_prompt_template_file": "aggregator_prompt.txt",
     "output_file": "output.txt",
-    "models": ["llama3.1:8b-instruct-q4_K_S", "Qwen2.5-14B-Instruct.i1-IQ4_XS:latest", "Mistral-Nemo-Instruct-2407-IQ4_XS:latest", "glm4:9b-chat-q4_K_S"],
-    "aggregator_model": "Mistral-Small-Instruct-2409-IQ4_XS:latest",
-    "num_ctx": 2048,
-    "num_ctx_aggregator": 12000,
-    "t": 0.7,
-    "t_aggregator": 0.7
+
+    "use_moa": false,
+    "moa_aggregator_prompt_template_file": "aggregator_prompt.txt",
+    "moa_aggregator_prompt_output_file": "aggregator_input.txt",
+    "moa_models": ["llama3.1:8b-instruct-q4_K_S", "Qwen2.5-14B-Instruct.i1-IQ4_XS:latest"],
+    "moa_aggregator_model": "llama3.1:8b-instruct-q4_K_S",
+    "moa_num_ctx": 1024,
+    "moa_num_ctx_aggregator": 6000,
+    "moa_t": 0.7,
+    "moa_t_aggregator": 0.7,
+
+    "use_tot": true,
+    "tot_n": 2,
+    "tot_model": "llama3.1:8b-instruct-q4_K_S",
+    "tot_num_ctx": 8142,
+    "tot_t": 0.7,
+    "tot_rating_extraction_prompt_file": "tot_rating_extraction_prompt.txt",
+    "tot_rating_extraction_num_ctx": 8142,
+    "tot_rating_extraction_t": 0.7,
+    "tot_rating_prompt_file": "tot_rating_prompt.txt",
+    "tot_rating_num_ctx": 8142,
+    "tot_rating_t": 0.7,
+    "tot_output_file": "tot_output.txt",
+    "tot_n_ratings": 2,
+
+    "tot_should_plan": true,
+    "tot_plan_n": 2,
+    "tot_planning_prompt_template_file": "tot_planning_prompt_template.txt",
+    "tot_augmented_prompt_template_file": "tot_augmented_prompt_template.txt"
 }

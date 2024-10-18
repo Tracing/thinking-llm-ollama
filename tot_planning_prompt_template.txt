@@ -1,0 +1,1 @@
+This is a user query. Write a plan to execute is query. Think step by step.
